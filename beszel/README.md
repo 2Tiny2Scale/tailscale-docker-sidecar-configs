@@ -1,6 +1,6 @@
 # Beszel with Tailscale Sidecar Configuration
 
-This Docker Compose configuration integrates [Beszel](https://github.com/henrygd/beszel) with Tailscale in a sidecar setup to enhance secure communication over a private Tailscale network. By utilizing Tailscale, this configuration ensures that all communication handled by Beszel remains secure and private within your Tailscale network. Thanks to @henrygd for the tool development.
+This Docker Compose configuration integrates [Beszel](https://github.com/henrygd/beszel) with Tailscale in a sidecar setup to enhance secure communication over a private Tailscale network. By utilizing Tailscale, this configuration ensures that all communication handled by Beszel remains secure and private within your Tailscale network. Thanks to @[henrygd](https://github.com/henrygd) for the tool development.
 
 ## Beszel
 
