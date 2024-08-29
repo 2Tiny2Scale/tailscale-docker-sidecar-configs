@@ -14,8 +14,8 @@ The example below illustrates a basic setup where Tailscale is used to manage ne
 
 ## Documentation
 
-[Tailscale.com - Knowledge Base](https://tailscale.com/kb)
-[Tailscale.com - Docker Tailscale Guide](https://tailscale.com/blog/docker-tailscale-guide)
+- [Tailscale.com - Knowledge Base](https://tailscale.com/kb)
+- [Tailscale.com - Docker Tailscale Guide](https://tailscale.com/blog/docker-tailscale-guide)
 
 ## License
 
