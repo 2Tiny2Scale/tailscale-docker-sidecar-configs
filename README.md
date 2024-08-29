@@ -11,6 +11,7 @@ The example below illustrates a basic setup where Tailscale is used to manage ne
 - [AdGuard Home](adguardhome)
 - [Beszel](beszel)
 - [Plex](plex)
+- [uptime-kuma](uptime-kuma)
 
 ## Documentation
 
