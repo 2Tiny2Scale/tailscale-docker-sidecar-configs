@@ -1,0 +1,36 @@
+services:
+
+  # Tailscale Sidecar Configuration
+  tailscale-beszel-agent:
+    image: tailscale/tailscale:latest  # Image to be used
+    container_name: tailscale-beszel-agent  # Name for local container management
+    hostname: monitor # Name used within your Tailscale environment
+    environment:
+      - TS_AUTHKEY=tskey-auth-<ADD-YOUR-AUTH-KEY-HERE>
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_USERSPACE=false
+    volumes:
+      - /home/docker-user/beszel-agent/config:/config # Config folder used to store Tailscale files - you may need to change the path
+      - /home/docker-user/beszel-agent/tailscale-beszel-agent/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
+      - /dev/net/tun:/dev/net/tun # Network configuration for Tailscale to work
+    cap_add:
+      - net_admin # Tailscale requirement
+      - sys_module # Tailscale requirement
+    # If any DNS issues arise, use your preferred DNS provider by uncommenting the config below
+    # dns: 
+    #   - 1.1.1.1 
+    restart: unless-stopped
+
+  # Beszel Agent
+  beszel-agent:
+    image: henrygd/beszel-agent:latest # Image to be used
+    network_mode: service:tailscale-beszel-agent # Sidecar configuration to route Beszel Agent through Tailscale
+    container_name: beszel-agent # Name for local container management
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro # Read-only access to the docker.sock
+    environment:
+      PORT: 45876
+      KEY: "ssh-ed25519 <ADD-YOUR-beszel-agent-KEY-HERE>"
+    depends_on:
+      - tailscale-beszel-agent
+    restart: unless-stopped
