@@ -10,6 +10,7 @@ The example below illustrates a basic setup where Tailscale is used to manage ne
 
 - [AdGuard Home](adguardhome)
 - [Beszel](beszel)
+- [NextCloud](nextcloud)
 - [Plex](plex)
 - [Stirling-PDF](stirlingpdf)
 - [Tailscale Exit Node](tailscale-exit-node)
