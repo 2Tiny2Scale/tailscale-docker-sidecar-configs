@@ -1,0 +1,57 @@
+services:
+
+  # Tailscale Sidecar Configuration
+  tailscale-nextcloud:
+    image: tailscale/tailscale:latest # Image to be used
+    container_name: tailscale-nextcloud # Name for local container management
+    hostname: nextcloud # Name used within your Tailscale environment
+    environment:
+      - TS_AUTHKEY=tskey-auth-<ADD-YOUR-AUTH-KEY-HERE>
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_SERVE_CONFIG=/config/serve.json # Tailsacale Serve configuration to expose the web interface on your local Tailnet - remove this line if not required
+      - TS_USERSPACE=false
+    volumes:
+      - /home/docker-user/nextcloud/config:/config # Config folder used to store Tailscale files - you may need to change the path
+      - /home/docker-user/nextcloud/tailscale-nextcloud/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
+      - /dev/net/tun:/dev/net/tun # Network configuration for Tailscale to work
+    cap_add:
+      - net_admin
+      - sys_module
+    # If any DNS issues arise, use your preferred DNS provider by uncommenting the config below
+    # dns: 
+    #   - 1.1.1.1
+    restart: unless-stopped
+
+  # NextCloud Server
+  nextcloud:
+    image: nextcloud:latest # Image to be used
+    network_mode: service:tailscale-nextcloud # Sidecar configuration to route NextCloud through Tailscale
+    container_name: nextcloud # Name for local container management
+    volumes:
+      - /mnt/nextcloud_data/:/var/www/html
+    environment:
+      - MYSQL_PASSWORD=<YOUR-SUPER-STRONG-PASSWORD>
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=db # Please note, this variable should reflect the service name of the database itself, in this case db
+    depends_on:
+      - db
+      - tailscale-nextcloud
+    restart: unless-stopped
+
+  # MariaDB used by NextCloud
+  db:
+    image: mariadb:latest # Image to be used
+    container_name: nextcloud_db # Name for local container management
+    environment:
+      - MYSQL_ROOT_PASSWORD=<YOUR-SUPER-STRONG-PASSWORD>
+      - MYSQL_PASSWORD=<YOUR-SUPER-STRONG-PASSWORD>
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  nextcloud_data:
+  db_data:
