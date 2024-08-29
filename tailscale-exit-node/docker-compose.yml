@@ -1,0 +1,28 @@
+services:
+
+  # Tailscale Exit Node
+  tailscale:
+    image: tailscale/tailscale:latest # Image to be used
+    container_name: tailscale-exit-node # Name for local container management
+    hostname: tailscale-exit-node # Name used within your Tailscale environment
+    environment:
+      - TS_AUTHKEY=tskey-auth-<ADD-YOUR-AUTH-KEY-HERE>
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_EXTRA_ARGS=--advertise-exit-node
+      - TS_USERSPACE=false
+    volumes:
+      - /home/docker-user/tailscale-exit-node/config:/config
+      - /home/docker-user/tailscale-exit-node/tailscale-node/state:/var/lib/tailscale
+      - /dev/net/tun:/dev/net/tun
+    dns:
+      - 1.1.1.1 # Can be changed to your desired DNS provider
+    sysctls:
+      net.ipv4.ip_forward: 1
+      net.ipv6.conf.all.forwarding: 1
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    devices:
+      - /dev/net/tun
+    network_mode: bridge
+    restart: unless-stopped
