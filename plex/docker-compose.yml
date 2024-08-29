@@ -12,7 +12,7 @@ services:
       - TS_USERSPACE=false
     volumes:
       - /home/docker-user/plex/config:/config # Config folder used to store Tailscale files - you may need to change the path
-      - /home/docker-user/plex/tailscale-plex/state:/var/lib/tailscale  # Tailscale requirement - you may need to change the path
+      - /home/docker-user/plex/tailscale-plex/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
       - /dev/net/tun:/dev/net/tun # Network configuration for Tailscale to work
     cap_add:
       - net_admin
@@ -27,7 +27,7 @@ services:
   # Plex Media Server
   plex:
     image: lscr.io/linuxserver/plex:latest # Image to be used
-    network_mode: service:tailscale-plex # Sidecar configuration to route Beszel Hub through Tailscale
+    network_mode: service:tailscale-plex # Sidecar configuration to route Plex through Tailscale
     container_name: plex # Name for local container management
     environment:
       - PUID=1000
