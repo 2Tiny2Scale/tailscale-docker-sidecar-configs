@@ -24,8 +24,8 @@ services:
   # Beszel Agent
   beszel-agent:
     image: henrygd/beszel-agent:latest # Image to be used
-    network_mode: service:tailscale-beszel-agent # Sidecar configuration to route Beszel Hub through Tailscale
-    container_name: beszel-agent # Sidecar configuration to route Beszel Hub through Tailscale
+    network_mode: service:tailscale-beszel-agent # Sidecar configuration to route Beszel Agent through Tailscale
+    container_name: beszel-agent # Name for local container management
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro # Read-only access to the docker.sock
     environment:
