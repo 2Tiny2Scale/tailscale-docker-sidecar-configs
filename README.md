@@ -9,8 +9,8 @@ The example below illustrates a basic setup where Tailscale is used to manage ne
 ## Currently Available Example Configurations
 
 - [AdGuard Home](adguardhome)
-- [Plex](plex)
 - [Beszel](beszel)
+- [Plex](plex)
 
 ## Documentation
 
