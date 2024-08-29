@@ -12,6 +12,7 @@ The example below illustrates a basic setup where Tailscale is used to manage ne
 - [Beszel](beszel)
 - [Plex](plex)
 - [Stirling-PDF](stirlingpdf)
+- [Tailscale Exit Node](tailscale-exit-node)
 - [uptime-kuma](uptime-kuma)
 
 ## Documentation
