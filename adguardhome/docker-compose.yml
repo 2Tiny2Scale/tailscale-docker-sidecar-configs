@@ -20,7 +20,14 @@ services:
     ports:
       - "0.0.0.0:53:53/udp" # Binding port 53/udp to the local network - may be removed if only exposure to your Tailnet is required
       - "0.0.0.0:53:53/tcp" # Binding port 53/tcp to the local network - may be removed if only exposure to your Tailnet is required
+    healthcheck:
+      test: ["CMD", "tailscale", "status"] # Check if Tailscale is running
+      interval: 1m # How often to perform the check
+      timeout: 10s # Time to wait for the check to succeed
+      retries: 3 # Number of retries before marking as unhealthy
+      start_period: 10s # Time to wait before starting health checks
     restart: unless-stopped
+   
 
   # AdGuard Home
   adguardhome:
@@ -32,4 +39,10 @@ services:
       - /home/docker-user/adguardhome/configdir:/opt/adguardhome/conf # Config directory for Adguard Home - you may need to change the path
     depends_on:
       - tailscale-adguardhome
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "AdGuardHome"] # Check if AdGuard Home process is running
+      interval: 1m # How often to perform the check
+      timeout: 10s # Time to wait for the check to succeed
+      retries: 3 # Number of retries before marking as unhealthy
+      start_period: 30s # Time to wait before starting health checks
     restart: unless-stopped

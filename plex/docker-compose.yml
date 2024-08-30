@@ -22,6 +22,12 @@ services:
     # If any DNS issues arise, use your preferred DNS provider by uncommenting the config below
     # dns: 
     #   - 1.1.1.1 
+    healthcheck:
+      test: ["CMD", "tailscale", "status"] # Check if Tailscale is running
+      interval: 1m # How often to perform the check
+      timeout: 10s # Time to wait for the check to succeed
+      retries: 3 # Number of retries before marking as unhealthy
+      start_period: 10s # Time to wait before starting health checks
     restart: unless-stopped
 
   # Plex Media Server
@@ -42,4 +48,10 @@ services:
       - /mnt/plex/mylibrary:/mnt/mylibrary # Mount your own library
     depends_on:
       - tailscale-plex
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "Plex Media Server"] # Check if Plex process is running
+      interval: 1m # How often to perform the check
+      timeout: 10s # Time to wait for the check to succeed
+      retries: 3 # Number of retries before marking as unhealthy
+      start_period: 30s # Time to wait before starting health checks
     restart: unless-stopped
