@@ -20,6 +20,12 @@ services:
     # If any DNS issues arise, use your preferred DNS provider by uncommenting the config below
     # dns: 
     #   - 1.1.1.1
+    healthcheck:
+      test: ["CMD", "tailscale", "status"] # Check if Tailscale is running
+      interval: 1m # How often to perform the check
+      timeout: 10s # Time to wait for the check to succeed
+      retries: 3 # Number of retries before marking as unhealthy
+      start_period: 10s # Time to wait before starting health checks
     restart: unless-stopped
 
   # NextCloud Server
@@ -37,6 +43,12 @@ services:
     depends_on:
       - db
       - tailscale-nextcloud
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "apache2"] # Check if Apache (used by Nextcloud) is running
+      interval: 1m # How often to perform the check
+      timeout: 10s # Time to wait for the check to succeed
+      retries: 3 # Number of retries before marking as unhealthy
+      start_period: 30s # Time to wait before starting health checks
     restart: unless-stopped
 
   # MariaDB used by NextCloud
@@ -50,6 +62,12 @@ services:
       - MYSQL_USER=nextcloud
     volumes:
       - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "pgrep", "mariadbd"] # Check if MariaDB is running
+      interval: 1m # How often to perform the check
+      timeout: 10s # Time to wait for the check to succeed
+      retries: 3 # Number of retries before marking as unhealthy
+      start_period: 30s # Time to wait before starting health checks
     restart: unless-stopped
 
 volumes:
