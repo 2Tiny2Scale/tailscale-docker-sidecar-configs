@@ -13,6 +13,7 @@ The example below illustrates a basic setup where Tailscale is used to manage ne
 - [NextCloud](nextcloud)
 - [Plex](plex)
 - [Portainer](portainer)
+- [Resilio Sync](resilio-sync)
 - [Stirling-PDF](stirlingpdf)
 - [Tailscale Exit Node](tailscale-exit-node)
 - [Uptime Kuma](uptime-kuma)
