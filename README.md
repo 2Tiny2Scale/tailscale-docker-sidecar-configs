@@ -12,6 +12,7 @@ The example below illustrates a basic setup where Tailscale is used to manage ne
 - [Beszel](beszel)
 - [NextCloud](nextcloud)
 - [Plex](plex)
+- [Portainer](portainer)
 - [Stirling-PDF](stirlingpdf)
 - [Tailscale Exit Node](tailscale-exit-node)
 - [Uptime Kuma](uptime-kuma)
@@ -22,7 +23,7 @@ Tailscale Funnel securely exposes services to the public internet. Tailscale Ser
 
 ### Tailscale Funnel
 
-[Tailscale Funnel](https://tailscale.com/kb/1223/funnel) is a feature that lets you route traffic from the wider internet to a local service running on a machine in your Tailscale network (known as a tailnet). You can think of this as publicly sharing a local service, like a web app, for anyone to access—even if they don’t have Tailscale themselves. More information about Tailscale Funnel can be found [here]
+[Tailscale Funnel](https://tailscale.com/kb/1223/funnel) is a feature that lets you route traffic from the wider internet to a local service running on a machine in your Tailscale network (known as a tailnet). You can think of this as publicly sharing a local service, like a web app, for anyone to access—even if they don’t have Tailscale themselves.
 
 An example configuration for Tailscale Funnel for your service is available [here](funnel-serve/funnel-example.json).
 

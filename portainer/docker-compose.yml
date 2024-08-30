@@ -1,0 +1,38 @@
+services:
+
+  # Tailscale Sidecar Configuration
+  tailscale-portainer:
+    image: tailscale/tailscale:latest # Image to be used
+    container_name: tailscale-portainer # Name for local container management
+    hostname: portainer # Name used within your Tailscale environment
+    environment:
+      - TS_AUTHKEY=tskey-auth-<ADD-YOUR-AUTH-KEY-HERE>
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_SERVE_CONFIG=/config/serve.json # Tailsacale Serve configuration to expose the web interface on your local Tailnet - remove this line if not required
+      - TS_USERSPACE=false
+    volumes:
+      - /home/docker-user/portainer/config:/config # Config folder used to store Tailscale files - you may need to change the path
+      - /home/docker-user/portainer/tailscale-portainer/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
+      - /dev/net/tun:/dev/net/tun # Network configuration for Tailscale to work
+    cap_add:
+      - net_admin
+      - sys_module
+    # If any DNS issues arise, use your preferred DNS provider by uncommenting the config below
+    # dns: 
+    #   - 1.1.1.1
+    restart: unless-stopped
+
+  # Portainer
+  portainer:
+    image: portainer/portainer-ce:latest # Image to be used
+    network_mode: service:tailscale-portainer  # Sidecar configuration to route NextCloud through Tailscale
+    container_name: portainer # Name for local container management
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    depends_on:
+      - tailscale-portainer
+
+volumes:
+  portainer_data:
