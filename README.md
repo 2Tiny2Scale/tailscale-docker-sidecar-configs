@@ -16,6 +16,7 @@ The example below illustrates a basic setup where Tailscale is used to manage ne
 - [Resilio Sync](resilio-sync)
 - [Stirling-PDF](stirlingpdf)
 - [Tailscale Exit Node](tailscale-exit-node)
+- [Tautulli](tautulli)
 - [Uptime Kuma](uptime-kuma)
 
 ## Tailscale Funnel vs. Tailscale Serve
