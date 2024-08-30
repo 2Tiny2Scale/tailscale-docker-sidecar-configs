@@ -41,8 +41,6 @@ services:
       - TZ=Europe/Amsterdam   
     volumes:
       - /mnt/tautulli:/config
-    ports:
-      - 8181:8181
     depends_on:
       - tailscale-tautulli
     healthcheck:
