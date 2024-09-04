@@ -31,7 +31,7 @@ services:
   # Portainer
   portainer:
     image: portainer/portainer-ce:latest # Image to be used
-    network_mode: service:tailscale-portainer  # Sidecar configuration to route NextCloud through Tailscale
+    network_mode: service:tailscale-portainer  # Sidecar configuration to route Portainer through Tailscale
     container_name: portainer # Name for local container management
     restart: unless-stopped
     volumes:
