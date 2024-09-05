@@ -11,8 +11,8 @@ services:
       - TS_SERVE_CONFIG=/config/serve.json # Tailsacale Serve configuration to expose the web interface on your local Tailnet - remove this line if not required
       - TS_USERSPACE=false
     volumes:
-      - /home/docker-user/uptime-kuma/config:/config # Config folder used to store Tailscale files - you may need to change the path
-      - /home/docker-user/uptime-kuma/tailscale-uptime-kuma/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
+      - ${PWD}/uptime-kuma/config:/config # Config folder used to store Tailscale files - you may need to change the path
+      - ${PWD}/uptime-kuma/tailscale-uptime-kuma/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
       - /dev/net/tun:/dev/net/tun # Network configuration for Tailscale to work
     cap_add:
       - net_admin
@@ -34,7 +34,7 @@ services:
     network_mode: service:tailscale-uptime-kuma  # Sidecar configuration to route uptime-kuma through Tailscale
     container_name: uptime-kuma # Name for local container management
     volumes:
-      - /home/docker-user/uptime-kuma/uptime-kuma-data:/app/data # uptime-kuma data/configuration folder
+      - ${PWD}/uptime-kuma/uptime-kuma-data:/app/data # uptime-kuma data/configuration folder
       - /var/run/docker.sock:/var/run/docker.sock:ro # Read-only access to the docker.sock
     depends_on:
       - tailscale-uptime-kuma

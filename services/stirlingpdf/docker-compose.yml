@@ -11,8 +11,8 @@ services:
       - TS_SERVE_CONFIG=/config/serve.json # Tailsacale Serve configuration to expose the web interface on your local Tailnet - remove this line if not required
       - TS_USERSPACE=false
     volumes:
-      - /home/docker-user/stirlingpdf/config:/config # Config folder used to store Tailscale files - you may need to change the path
-      - /home/docker-user/stirlingpdf/tailscale-stirlingpdf/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
+      - ${PWD}/stirlingpdf/config:/config # Config folder used to store Tailscale files - you may need to change the path
+      - ${PWD}/stirlingpdf/tailscale-stirlingpdf/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
       - /dev/net/tun:/dev/net/tun # Network configuration for Tailscale to work
     cap_add:
       - net_admin
@@ -31,10 +31,10 @@ services:
     network_mode: service:tailscale-stirlingpdf # Sidecar configuration to route Stirling-PDF through Tailscale
     container_name: stirlingpdf # Name for local container management
     volumes:
-      - /home/docker-user/stirlingpdf/trainingData:/usr/share/tessdata # Required for extra OCR languages
-      - /home/docker-user/stirlingpdf/extraConfigs:/configs
-#      - /home/docker-user/stirlingpdf/customFiles:/customFiles/ # May be enabled if desired
-#      - /home/docker-user/stirlingpdf/logs:/logs/ # May be enabled if desired
+      - ${PWD}/stirlingpdf/trainingData:/usr/share/tessdata # Required for extra OCR languages
+      - ${PWD}/stirlingpdf/extraConfigs:/configs
+#      - ${PWD}/stirlingpdf/customFiles:/customFiles/ # May be enabled if desired
+#      - ${PWD}/stirlingpdf/logs:/logs/ # May be enabled if desired
     environment:
       - DOCKER_ENABLE_SECURITY=false
       - INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false
