@@ -19,6 +19,7 @@ The example below illustrates a basic setup where Tailscale is used to manage ne
 - [Tailscale Exit Node](services/tailscale-exit-node)
 - [Tautulli](services/tautulli)
 - [Uptime Kuma](services/uptime-kuma)
+- [Vaultwarden](services/vaultwarden)
 
 ## Tailscale Funnel vs. Tailscale Serve
 
