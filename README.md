@@ -8,16 +8,17 @@ The example below illustrates a basic setup where Tailscale is used to manage ne
 
 ## Currently Available Example Configurations
 
-- [AdGuard Home](adguardhome)
-- [Beszel](beszel)
-- [NextCloud](nextcloud)
-- [Plex](plex)
-- [Portainer](portainer)
-- [Resilio Sync](resilio-sync)
-- [Stirling-PDF](stirlingpdf)
-- [Tailscale Exit Node](tailscale-exit-node)
-- [Tautulli](tautulli)
-- [Uptime Kuma](uptime-kuma)
+- [AdGuard Home](services/adguardhome)
+- [Beszel](services/beszel)
+- [NextCloud](services/nextcloud)
+- [Pi-hole](services/pihole)
+- [Plex](services/plex)
+- [Portainer](services/portainer)
+- [Resilio Sync](services/resilio-sync)
+- [Stirling-PDF](services/stirlingpdf)
+- [Tailscale Exit Node](services/tailscale-exit-node)
+- [Tautulli](services/tautulli)
+- [Uptime Kuma](services/uptime-kuma)
 
 ## Tailscale Funnel vs. Tailscale Serve
 
