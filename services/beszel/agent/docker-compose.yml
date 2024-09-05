@@ -10,8 +10,8 @@ services:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_USERSPACE=false
     volumes:
-      - /home/docker-user/beszel-agent/config:/config # Config folder used to store Tailscale files - you may need to change the path
-      - /home/docker-user/beszel-agent/tailscale-beszel-agent/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
+      - ${PWD}/beszel-agent/config:/config # Config folder used to store Tailscale files - you may need to change the path
+      - ${PWD}/beszel-agent/tailscale-beszel-agent/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
       - /dev/net/tun:/dev/net/tun # Network configuration for Tailscale to work
     cap_add:
       - net_admin # Tailscale requirement

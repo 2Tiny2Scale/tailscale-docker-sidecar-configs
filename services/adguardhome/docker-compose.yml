@@ -11,8 +11,8 @@ services:
       - TS_SERVE_CONFIG=/config/serve.json # Tailsacale Serve configuration to expose the web interface on your local Tailnet - remove this line if not required
       - TS_USERSPACE=false
     volumes:
-      - /home/docker-user/adguardhome/config:/config # Config folder used to store Tailscale files - you may need to change the path
-      - /home/docker-user/adguardhome/tailscale-adguardhome/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
+      - ${PWD}/adguardhome/config:/config # Config folder used to store Tailscale files - you may need to change the path
+      - ${PWD}/adguardhome/tailscale-adguardhome/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
       - /dev/net/tun:/dev/net/tun # Network configuration for Tailscale to work
     cap_add:
       - net_admin # Tailscale requirement
@@ -35,8 +35,8 @@ services:
     network_mode: service:tailscale-adguardhome # Sidecar configuration to route Adguard Home through Tailscale
     container_name: adguardhome # Name for local container management
     volumes:
-      - /home/docker-user/adguardhome/workdir:/opt/adguardhome/work # Work directory for Adguard Home - you may need to change the path
-      - /home/docker-user/adguardhome/configdir:/opt/adguardhome/conf # Config directory for Adguard Home - you may need to change the path
+      - ${PWD}/adguardhome/workdir:/opt/adguardhome/work # Work directory for Adguard Home - you may need to change the path
+      - ${PWD}/adguardhome/configdir:/opt/adguardhome/conf # Config directory for Adguard Home - you may need to change the path
     depends_on:
       - tailscale-adguardhome
     healthcheck:

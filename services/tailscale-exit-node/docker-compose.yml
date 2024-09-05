@@ -11,8 +11,8 @@ services:
       - TS_EXTRA_ARGS=--advertise-exit-node
       - TS_USERSPACE=false
     volumes:
-      - /home/docker-user/tailscale-exit-node/config:/config
-      - /home/docker-user/tailscale-exit-node/tailscale-node/state:/var/lib/tailscale
+      - ${PWD}/tailscale-exit-node/config:/config
+      - ${PWD}/tailscale-exit-node/tailscale-node/state:/var/lib/tailscale
       - /dev/net/tun:/dev/net/tun
     dns:
       - 1.1.1.1 # Can be changed to your desired DNS provider
