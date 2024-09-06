@@ -14,6 +14,7 @@ The example below illustrates a basic setup where Tailscale is used to manage ne
 - [Pi-hole](services/pihole)
 - [Plex](services/plex)
 - [Portainer](services/portainer)
+- [Radarr](services/radarr/)
 - [Resilio Sync](services/resilio-sync)
 - [Stirling-PDF](services/stirlingpdf)
 - [Tailscale Exit Node](services/tailscale-exit-node)
