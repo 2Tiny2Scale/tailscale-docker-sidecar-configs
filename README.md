@@ -6,21 +6,26 @@ The provided configurations showcase how to set up Tailscale alongside Docker se
 
 The example below illustrates a basic setup where Tailscale is used to manage network traffic for AdGuard Home in a Docker environment, utilizing a sidecar approach to simplify networking and enhance security.
 
+If you would like to add your own config, you can use the [service-template](templates/service-template/).
+
 ## Currently Available Example Configurations
 
 - [AdGuard Home](services/adguardhome)
+- [Bazarr](services/bazarr)
 - [Beszel](services/beszel)
 - [NextCloud](services/nextcloud)
 - [Pi-hole](services/pihole)
 - [Plex](services/plex)
 - [Portainer](services/portainer)
-- [Radarr](services/radarr/)
+- [Radarr](services/radarr)
 - [Resilio Sync](services/resilio-sync)
+- [Sonarr](services/sonarr)
 - [Stirling-PDF](services/stirlingpdf)
 - [Tailscale Exit Node](services/tailscale-exit-node)
 - [Tautulli](services/tautulli)
 - [Uptime Kuma](services/uptime-kuma)
 - [Vaultwarden](services/vaultwarden)
+- [qBittorrent](services/qbittorrent)
 
 ## Tailscale Funnel vs. Tailscale Serve
 
