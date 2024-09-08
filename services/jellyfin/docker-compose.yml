@@ -1,25 +1,29 @@
 services:
-  
   # Tailscale Sidecar Configuration
-  tailscale-radarr:
+  tailscale-jellyfin:
     image: tailscale/tailscale:latest # Image to be used
-    container_name: tailscale-radarr # Name for local container management
-    hostname: radarr # Name used within your Tailscale environment
+    container_name: tailscale-jellyfin # Name for local container management
+    hostname: jellyfin # Name used within your Tailscale environment
     environment:
       - TS_AUTHKEY=tskey-auth-<ADD-YOUR-AUTH-KEY-HERE>
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_SERVE_CONFIG=/config/serve.json # Tailsacale Serve configuration to expose the web interface on your local Tailnet - remove this line if not required
       - TS_USERSPACE=false
     volumes:
-      - ${PWD}/radarr/config:/config # Config folder used to store Tailscale files - you may need to change the path
-      - ${PWD}/radarr/tailscale-radarr/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
+      - ${PWD}/jellyfin/config:/config # Config folder used to store Tailscale files - you may need to change the path
+      - ${PWD}/jellyfin/tailscale-jellyfin/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
       - /dev/net/tun:/dev/net/tun # Network configuration for Tailscale to work
     cap_add:
       - net_admin # Tailscale requirement
       - sys_module # Tailscale requirement
+    ports:
+      - 0.0.0.0:8096:8096 # Binding port 8096 to the local network - may be removed if only exposure to your Tailnet is required
+      # - "0.0.0.0:7359:7359/udp" #Optional - Allows clients to discover Jellyfin on the local network 
+      # - "0.0.0.0:1900:1900/udp" #Optional - Service discovery used by DNLA and clients
+    
     # If any DNS issues arise, use your preferred DNS provider by uncommenting the config below
     # dns: 
-    #   - 1.1.1.1
+    #   - 1.1.1.1 
     healthcheck:
       test: ["CMD", "tailscale", "status"] # Check if Tailscale is running
       interval: 1m # How often to perform the check
@@ -28,23 +32,25 @@ services:
       start_period: 10s # Time to wait before starting health checks
     restart: unless-stopped
 
-  # radarr
-  radarr:
-    image: radarr/server:latest
-    network_mode: service:tailscale-radarr # Sidecar configuration to route radarr through Tailscale
-    container_name: radarr
+  # jellyfin
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest # Image to be used
+    network_mode: service:tailscale-jellyfin # Sidecar configuration to route jellyfin through Tailscale
+    container_name: jellyfin # Name for local container management
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=TZ=Europe/Amsterdam
+      - TZ=Europe/Amsterdam
+      # - JELLYFIN_PublishedServerUrl=192.168.0.5 #optional
     volumes:
-      - ${PWD}/radarr/config:/config
-      - ${PWD}/media/movies:/movies #Optional
-      - ${PWD}/downloadclient-downloads:/downloads' #Optional
+      - ${PWD}/media/config:/config
+      - ${PWD}/jellyfin/config:/config
+      - ${PWD}/media/tvseries:/data/tvshows
+      - ${PWD}/media/movies:/data/movies
     depends_on:
-      - tailscale-radarr
+      - tailscale-jellyfin
     healthcheck:
-      test: ["CMD", "pgrep", "-f", "Radarr"] # Check if Radarr process is running
+      test: ["CMD", "pgrep", "-f", "jellyfin"] # Check if jellyfin process is running
       interval: 1m # How often to perform the check
       timeout: 10s # Time to wait for the check to succeed
       retries: 3 # Number of retries before marking as unhealthy

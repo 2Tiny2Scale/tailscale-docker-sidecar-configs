@@ -42,9 +42,9 @@ services:
       - VERSION=docker
       - PLEX_CLAIM= #optional
     volumes:
-      - ${PWD}/plex/library:/config
-      - ${PWD}/plex/tvseries:/tv
-      - ${PWD}/plex/movies:/movies
+      - ${PWD}/plex/config:/config
+      - ${PWD}/media/tvseries:/tv
+      - ${PWD}/media/movies:/movies
     depends_on:
       - tailscale-plex
     healthcheck:
