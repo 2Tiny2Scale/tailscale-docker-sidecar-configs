@@ -39,7 +39,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Amsterdam
-      - WEBUI_PORT=8080 #@crypt0rr, I'm not sure if this is useful here. Remove if you disagree. 
+      - WEBUI_PORT=8080 
       # - TORRENTING_PORT=6881 #optional
     volumes:
       - ${PWD}/qbittorrent/config:/config

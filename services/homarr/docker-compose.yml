@@ -1,5 +1,4 @@
 services:
-# Make sure you replace SERVICE and SERVICEPORT. Environmentvariables may differ, check documentation of container maintaner. 
   # Tailscale Sidecar Configuration
   tailscale-homarr:
     image: tailscale/tailscale:latest # Image to be used

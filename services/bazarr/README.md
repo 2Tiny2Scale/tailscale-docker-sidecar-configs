@@ -1,4 +1,4 @@
-# SERVICE with Tailscale Sidecar Configuration
+# Bazarr with Tailscale Sidecar Configuration
 
 This Docker Compose configuration sets up [Bazarr](https://github.com/morpheus65535/bazarr) with Tailscale as a sidecar container to securely manage and access your subtitle management system over a private Tailscale network. By using Tailscale in a sidecar configuration, you can enhance the security and privacy of your Bazarr instance, ensuring that it is only accessible within your Tailscale network.
 
