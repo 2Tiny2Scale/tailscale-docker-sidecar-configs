@@ -26,7 +26,7 @@ services:
       timeout: 10s # Time to wait for the check to succeed
       retries: 3 # Number of retries before marking as unhealthy
       start_period: 10s # Time to wait before starting health checks
-    restart: unless-stopped
+    restart: always
 
   # Beszel Hub
   beszel-hub:
@@ -37,4 +37,4 @@ services:
       - ${PWD}/beszel/hub/beszel_data:/beszel_data  # Work directory for Beszel Hub - you may need to change the path
     depends_on:
       - tailscale-beszel-hub
-    restart: unless-stopped
+    restart: always

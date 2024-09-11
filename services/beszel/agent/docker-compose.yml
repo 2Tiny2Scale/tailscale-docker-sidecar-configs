@@ -25,7 +25,7 @@ services:
       timeout: 10s # Time to wait for the check to succeed
       retries: 3 # Number of retries before marking as unhealthy
       start_period: 10s # Time to wait before starting health checks
-    restart: unless-stopped
+    restart: always
 
   # Beszel Agent
   beszel-agent:
@@ -39,4 +39,4 @@ services:
       KEY: "ssh-ed25519 <ADD-YOUR-beszel-agent-KEY-HERE>"
     depends_on:
       - tailscale-beszel-agent
-    restart: unless-stopped
+    restart: always
