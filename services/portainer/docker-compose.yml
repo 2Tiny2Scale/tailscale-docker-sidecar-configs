@@ -26,14 +26,14 @@ services:
       timeout: 10s # Time to wait for the check to succeed
       retries: 3 # Number of retries before marking as unhealthy
       start_period: 10s # Time to wait before starting health checks
-    restart: unless-stopped
+    restart: always
 
   # Portainer
   portainer:
     image: portainer/portainer-ce:latest # Image to be used
     network_mode: service:tailscale-portainer  # Sidecar configuration to route Portainer through Tailscale
     container_name: portainer # Name for local container management
-    restart: unless-stopped
+    restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
