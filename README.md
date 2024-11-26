@@ -4,7 +4,7 @@ This repository provides examples of using [Tailscale](https://tailscale.com/) i
 
 The provided configurations showcase how to set up Tailscale alongside Docker services, with a focus on ensuring connectivity, security, and ease of deployment. The examples include configurations for Tailscale authentication, state management, and service routing.
 
-The example below illustrates a basic setup where Tailscale is used to manage network traffic for AdGuard Home in a Docker environment, utilizing a sidecar approach to simplify networking and enhance security.
+The example configurations below illustrate a basic setup where Tailscale is used to manage network traffic for AdGuard Home in a Docker environment, utilizing a sidecar approach to simplify networking and enhance security.
 
 If you would like to add your own config, you can use the [service-template](templates/service-template/).
 
