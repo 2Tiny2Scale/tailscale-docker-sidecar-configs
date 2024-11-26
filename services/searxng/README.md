@@ -9,3 +9,7 @@ This Docker Compose configuration sets up [searXNG](https://github.com/searxng/s
 ## Configuration Overview
 
 In this setup, the `tailscale-searxng` service runs Tailscale, which manages secure networking for the searXNG service. The `searxng` service utilizes the Tailscale network stack via Docker’s `network_mode: service:` configuration. This setup ensures that searXNG is only accessible through your Tailscale network (or locally, if preferred). With this configuration, you can enjoy a private, secure, and customizable search engine experience, free from user tracking or external access.
+
+## References
+
+[![Replace Google with SearXNG - a privacy respecting, self-hosted search engine](https://img.youtube.com/vi/cg9d87PuanE/0.jpg)](https://www.youtube.com/watch?v=cg9d87PuanE)
