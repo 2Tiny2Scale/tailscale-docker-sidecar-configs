@@ -8,6 +8,12 @@ The example below illustrates a basic setup where Tailscale is used to manage ne
 
 If you would like to add your own config, you can use the [service-template](templates/service-template/).
 
+## Getting Started
+
+1. Locate the service you want to host
+2. Copy the contents provided for your service of choice
+3. Make a copy of the supplied environment example file and populate with your own details `cp .env-example .env`
+
 ## Currently Available Example Configurations
 
 - [AdGuard Home](services/adguardhome)
@@ -28,12 +34,6 @@ If you would like to add your own config, you can use the [service-template](tem
 - [Tautulli](services/tautulli)
 - [Uptime Kuma](services/uptime-kuma)
 - [Vaultwarden](services/vaultwarden)
-
-## Getting Started
-
-1. Locate the service you want to host
-2. Copy the contents provided for your service of choice
-3. Make a copy of the supplied environment example file and populate with your own details `cp .env-example .env`
 
 ## Tailscale Funnel vs. Tailscale Serve
 
