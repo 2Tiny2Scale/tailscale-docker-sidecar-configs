@@ -29,6 +29,12 @@ If you would like to add your own config, you can use the [service-template](tem
 - [Uptime Kuma](services/uptime-kuma)
 - [Vaultwarden](services/vaultwarden)
 
+## Getting Started
+
+1. Locate the service you want to host
+2. Copy the contents provided for your service of choice
+3. Make a copy of the supplied environment example file and populate with your own details `cp .env-example .env`
+
 ## Tailscale Funnel vs. Tailscale Serve
 
 Tailscale Funnel securely exposes services to the public internet. Tailscale Serve is for sharing content within a private Tailscale network (Tailnet). You'll need to decide how you want to expose the service, the configurations in this repository exposes the local Tailnet.
