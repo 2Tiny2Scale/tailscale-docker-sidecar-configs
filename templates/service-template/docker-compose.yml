@@ -33,7 +33,7 @@ services:
 
   # ${SERVICE}
   application:
-    image: lscr.io/linuxserver/${SERVICE}:latest # Image to be used
+    image: ${IMAGEURL} # Image to be used
     network_mode: tailscale # Sidecar configuration to route ${SERVICE} through Tailscale
     container_name: app-${SERVICE} # Name for local container management
     environment:
