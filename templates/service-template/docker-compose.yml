@@ -21,8 +21,8 @@ services:
     ports:
       - 0.0.0.0:${SERVICEPORT}:${SERVICEPORT} # Binding port ${SERVICE}PORT to the local network - may be removed if only exposure to your Tailnet is required
     # If any DNS issues arise, use your preferred DNS provider by uncommenting the config below
-    # dns: 
-    #   - 1.1.1.1 
+    dns: 
+       - ${DNS_SERVER}
     healthcheck:
       test: ["CMD", "tailscale", "status"] # Check if Tailscale is running
       interval: 1m # How often to perform the check
