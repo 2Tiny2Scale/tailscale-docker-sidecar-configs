@@ -1,24 +1,25 @@
 services:
-# Make sure you replace SERVICE and SERVICEPORT. Environmentvariables may differ, check documentation of container maintaner. 
+# Make sure you have updated/checked the .env file with the correct variables. 
+# All the ${ xx } need to be defined there.
   # Tailscale Sidecar Configuration
-  tailscale-SERVICE:
+  tailscale:
     image: tailscale/tailscale:latest # Image to be used
-    container_name: tailscale-SERVICE # Name for local container management
-    hostname: SERVICE # Name used within your Tailscale environment
+    container_name: ts-${SERVICE} # Name for local container management
+    hostname: ts-${SERVICE} # Name used within your Tailscale environment
     environment:
-      - TS_AUTHKEY=tskey-auth-<ADD-YOUR-AUTH-KEY-HERE>
+      - TS_AUTHKEY=${TS-AUTHKEY}
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_SERVE_CONFIG=/config/serve.json # Tailsacale Serve configuration to expose the web interface on your local Tailnet - remove this line if not required
       - TS_USERSPACE=false
     volumes:
-      - ${PWD}/SERVICE/config:/config # Config folder used to store Tailscale files - you may need to change the path
-      - ${PWD}/SERVICE/tailscale-SERVICE/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
+      - ${PWD}/${SERVICE}/ts/config:/config # Config folder used to store Tailscale files - you may need to change the path
+      - ${PWD}/${SERVICE}/ts/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
       - /dev/net/tun:/dev/net/tun # Network configuration for Tailscale to work
     cap_add:
       - net_admin # Tailscale requirement
       - sys_module # Tailscale requirement
     ports:
-      - 0.0.0.0:SERVICEPORT:SERVICEPORT # Binding port SERVICEPORT to the local network - may be removed if only exposure to your Tailnet is required
+      - 0.0.0.0:${SERVICEPORT}:${SERVICEPORT} # Binding port ${SERVICE}PORT to the local network - may be removed if only exposure to your Tailnet is required
     # If any DNS issues arise, use your preferred DNS provider by uncommenting the config below
     # dns: 
     #   - 1.1.1.1 
@@ -30,21 +31,21 @@ services:
       start_period: 10s # Time to wait before starting health checks
     restart: always
 
-  # SERVICE
-  SERVICE:
-    image: lscr.io/linuxserver/SERVICE:latest # Image to be used
-    network_mode: service:tailscale-SERVICE # Sidecar configuration to route SERVICE through Tailscale
-    container_name: SERVICE # Name for local container management
+  # ${SERVICE}
+  application:
+    image: lscr.io/linuxserver/${SERVICE}:latest # Image to be used
+    network_mode: tailscale # Sidecar configuration to route ${SERVICE} through Tailscale
+    container_name: app-${SERVICE} # Name for local container management
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Amsterdam
     volumes:
-      - ${PWD}/SERVICE/config:/config
+      - ${PWD}/${SERVICE}/app/config:/config
     depends_on:
-      - tailscale-SERVICE
+      - tailscale
     healthcheck:
-      test: ["CMD", "pgrep", "-f", "SERVICE"] # Check if SERVICE process is running
+      test: ["CMD", "pgrep", "-f", "${SERVICE}"] # Check if ${SERVICE} process is running
       interval: 1m # How often to perform the check
       timeout: 10s # Time to wait for the check to succeed
       retries: 3 # Number of retries before marking as unhealthy
