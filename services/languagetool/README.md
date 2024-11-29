@@ -21,7 +21,7 @@ In this setup, the `tailscale-adguardhome` service runs Tailscale, which manages
 
 ```
 home/
-├─ tinyuser/
+├─ /
 │  ├─ ngrams/
 │  │  ├─ en/
 │  │  │  ├─ 1grams/
