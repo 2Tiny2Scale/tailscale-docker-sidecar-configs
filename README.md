@@ -14,11 +14,11 @@ If you would like to add your own config, you can use the [service-template](tem
 - [Bazarr](services/bazarr)
 - [Beszel](services/beszel)
 - [Excalidraw](services/excalidraw)
+- [LanguageTool](services/languagetool)
 - [NextCloud](services/nextcloud)
 - [Pi-hole](services/pihole)
 - [Plex](services/plex)
 - [Portainer](services/portainer)
-- [qBittorrent](services/qbittorrent)
 - [Radarr](services/radarr)
 - [Resilio Sync](services/resilio-sync)
 - [searXNG](services/searxng)
@@ -28,6 +28,7 @@ If you would like to add your own config, you can use the [service-template](tem
 - [Tautulli](services/tautulli)
 - [Uptime Kuma](services/uptime-kuma)
 - [Vaultwarden](services/vaultwarden)
+- [qBittorrent](services/qbittorrent)
 
 ## Tailscale Funnel vs. Tailscale Serve
 
