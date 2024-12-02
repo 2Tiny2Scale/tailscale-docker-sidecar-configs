@@ -21,8 +21,8 @@ services:
     ports:
       - 0.0.0.0:${SERVICEPORT}:${SERVICEPORT} # Binding port ${SERVICE}PORT to the local network - may be removed if only exposure to your Tailnet is required
     # If any DNS issues arise, use your preferred DNS provider by uncommenting the config below
-    dns: 
-       - ${DNS_SERVER}
+    # dns: 
+    #   - ${DNS_SERVER}
     healthcheck:
       test: ["CMD", "tailscale", "status"] # Check if Tailscale is running
       interval: 1m # How often to perform the check
@@ -34,7 +34,7 @@ services:
   # ${SERVICE}
   application:
     image: ${IMAGEURL} # Image to be used
-    network_mode: tailscale # Sidecar configuration to route ${SERVICE} through Tailscale
+    network_mode: service:tailscale # Sidecar configuration to route ${SERVICE} through Tailscale
     container_name: app-${SERVICE} # Name for local container management
     environment:
       - PUID=1000
