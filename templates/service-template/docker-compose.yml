@@ -4,8 +4,8 @@ services:
   # Tailscale Sidecar Configuration
   tailscale:
     image: tailscale/tailscale:latest # Image to be used
-    container_name: ts-${SERVICE} # Name for local container management
-    hostname: ts-${SERVICE} # Name used within your Tailscale environment
+    container_name: ${SERVICE} # Name for local container management
+    hostname: ${SERVICE} # Name used within your Tailscale environment
     environment:
       - TS_AUTHKEY=${TS-AUTHKEY}
       - TS_STATE_DIR=/var/lib/tailscale
