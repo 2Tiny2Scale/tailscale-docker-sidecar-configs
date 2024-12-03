@@ -16,5 +16,5 @@ In this setup, the `tailscale-SERVICE` service runs Tailscale, which manages sec
 
 Please check the following contents for validity as some variables need to be defined upfront.
 
-- [ ] .env // This files hold the main parts
-- [ ] ./config/serve.json // This file requires a service port of the app to be defined
+- `.env` // This files hold the main parts
+- `./config/serve.json` // This file requires a service port of the app to be defined
