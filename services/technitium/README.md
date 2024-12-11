@@ -14,5 +14,5 @@ In this setup, the Technitium Service runs on Tailscale, which manages secure ne
 
 Please check the following contents for validity as some variables need to be defined upfront.
 
-- `.env` // This files hold the main parts (preconfigured)
+- `.env` // This files hold the main parts - must check
 - `./config/serve.json` // This file contains the service port for tailscale (preconfigured)
