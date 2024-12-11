@@ -1,6 +1,6 @@
 # Technitium DNS server with Tailscale Sidecar Configuration
 
-This Docker Compose configuration sets up a [Technitium DNS Server](https://github.com/TechnitiumSoftware/DnsServer)) with Tailscale as a sidecar container ......
+This Docker Compose configuration sets up a [Technitium DNS Server](https://github.com/TechnitiumSoftware/DnsServer) with Tailscale as a sidecar container ......
 
 ## Technitium
 
