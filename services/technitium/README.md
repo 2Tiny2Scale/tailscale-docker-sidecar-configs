@@ -1,20 +1,18 @@
-# Make sure you replace SERVICE.
+# Technitium DNS server with Tailscale Sidecar Configuration
 
-# SERVICE with Tailscale Sidecar Configuration
+This Docker Compose configuration sets up a [Technitium DNS Server](https://github.com/TechnitiumSoftware/DnsServer)) with Tailscale as a sidecar container ......
 
-This Docker Compose configuration sets up [SERVICE](LINK TO PAFE OF MAINTAINER) with Tailscale as a sidecar container ......
+## Technitium
 
-## SERVICE
-
-[SERVICE](LINK TO PAFE OF MAINTAINER) information about service...
+[Technitium DNS Server](https://github.com/TechnitiumSoftware/DnsServer) information about Technitium...
 
 ## Configuration Overview
 
-In this setup, the `tailscale-SERVICE` service runs Tailscale, which manages secure networking for the SERVICE. The `SERVICE` service utilizes the Tailscale network stack via Docker's `network_mode: service:` configuration. This setup ensures that SERVICE's service is only accessible through the Tailscale network (or locally, if preferred), providing an extra layer of security and privacy for your SERVICE.
+In this setup, the Technitium Service runs on Tailscale, which manages secure networking for the Technitium DNS Services. The `Technitium` utilizes the Tailscale network stack via Docker's `network_mode: technitium:` configuration. This setup ensures that Technitium's Technitium is only accessible through the Tailscale network (or locally, if preferred. Modifications nescsary), providing an extra layer of security and privacy for your Technitium.
 
 ## Files to check
 
 Please check the following contents for validity as some variables need to be defined upfront.
 
-- `.env` // This files hold the main parts
-- `./config/serve.json` // This file requires a service port of the app to be defined
+- `.env` // This files hold the main parts (preconfigured)
+- `./config/serve.json` // This file contains the service port for tailscale (preconfigured)
