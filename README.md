@@ -26,6 +26,7 @@ If you would like to add your own config, you can use the [service-template](tem
 - [Stirling-PDF](services/stirlingpdf)
 - [Tailscale Exit Node](services/tailscale-exit-node)
 - [Tautulli](services/tautulli)
+- [Technitium DNS](services/technitium)
 - [Uptime Kuma](services/uptime-kuma)
 - [Vaultwarden](services/vaultwarden)
 - [qBittorrent](services/qbittorrent)
