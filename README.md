@@ -14,6 +14,7 @@ If you would like to add your own config, you can use the [service-template](tem
 - [Bazarr](services/bazarr)
 - [Beszel](services/beszel)
 - [Excalidraw](services/excalidraw)
+- [Gokapi](services/gokapi)
 - [LanguageTool](services/languagetool)
 - [NextCloud](services/nextcloud)
 - [Pi-hole](services/pihole)
