@@ -13,6 +13,7 @@ If you would like to add your own config, you can use the [service-template](tem
 - [AdGuard Home](services/adguardhome)
 - [Bazarr](services/bazarr)
 - [Beszel](services/beszel)
+- [Cyberchef](services/cyberchef)
 - [Dozzle](services/dozzle)
 - [Excalidraw](services/excalidraw)
 - [Gokapi](services/gokapi)
