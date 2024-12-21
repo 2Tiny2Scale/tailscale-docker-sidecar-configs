@@ -1,0 +1,8 @@
+## Create user with: docker run amir20/dozzle generate --name YourNameHere --email YourEmailHere --password YourPasswordHere YourUsernameHere
+
+users:
+    ExampleUser1:
+        email: example@example.com
+        name: exampleName
+        password: $2a$11$OoyqEqK/bH8cBFnbD.UuB.t7HADiZOeX4z4_ExampleBCRYPT
+        filter: ""
