@@ -32,6 +32,7 @@ If you would like to add your own config, you can use the [service-template](tem
 - [Tailscale Exit Node](services/tailscale-exit-node)
 - [Tautulli](services/tautulli)
 - [Technitium DNS](services/technitium)
+- [Traefik Reverse Proxy](services/traefik)
 - [Uptime Kuma](services/uptime-kuma)
 - [Vaultwarden](services/vaultwarden)
 - [qBittorrent](services/qbittorrent)
