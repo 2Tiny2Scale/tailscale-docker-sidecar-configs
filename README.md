@@ -20,6 +20,7 @@ If you would like to add your own config, you can use the [service-template](tem
 - [IT-Tools](services/it-tools)
 - [LanguageTool](services/languagetool)
 - [NextCloud](services/nextcloud)
+- [Node-RED](services/nodered)
 - [Pi-hole](services/pihole)
 - [Plex](services/plex)
 - [Portainer](services/portainer)
