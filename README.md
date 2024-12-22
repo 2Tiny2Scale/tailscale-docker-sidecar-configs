@@ -21,6 +21,7 @@ If you would like to add your own config, you can use the [service-template](tem
 - [LanguageTool](services/languagetool)
 - [NextCloud](services/nextcloud)
 - [Pi-hole](services/pihole)
+- [Pingvin Share](services/pingvin-share/)
 - [Plex](services/plex)
 - [Portainer](services/portainer)
 - [Radarr](services/radarr)
