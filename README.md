@@ -22,6 +22,7 @@ If you would like to add your own config, you can use the [service-template](tem
 - [NextCloud](services/nextcloud)
 - [Node-RED](services/nodered)
 - [Pi-hole](services/pihole)
+- [Pingvin Share](services/pingvin-share/)
 - [Plex](services/plex)
 - [Portainer](services/portainer)
 - [Radarr](services/radarr)
