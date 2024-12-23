@@ -6,7 +6,6 @@ This Docker Compose configuration sets up [LanguageTool](https://languagetool.or
 
 [LanguageTool](https://languagetool.org) is a powerful grammar and spell-checking tool available for various languages. It can be used in various applications, including web browsers, office suites, and as a standalone server for integration with other services.
 
-
 ## Configuration Overview
 
 In this setup, the `tailscale-adguardhome` service runs Tailscale, which manages secure networking for LanguageTool. The `languagetool` service utilizes the Tailscale network stack via Docker's `network_mode: service:`. This setup ensures that LanguageTool's service is only accessible through the Tailscale network (or locally, if preferred), providing an extra layer of security and privacy for your LanguageTool deployment.
@@ -19,7 +18,7 @@ In this setup, the `tailscale-adguardhome` service runs Tailscale, which manages
 
 [Download](http://languagetool.org/download/ngram-data/) the n-gram dataset(s) onto your local machine and unzip them into a local ngrams directory:
 
-```
+```plain
 home/
 ├─ /
 │  ├─ ngrams/
