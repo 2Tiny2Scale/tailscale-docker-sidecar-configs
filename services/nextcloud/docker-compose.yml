@@ -1,25 +1,28 @@
 services:
-
+# Make sure you have updated/checked the .env file with the correct variables. 
+# All the ${ xx } need to be defined there.
   # Tailscale Sidecar Configuration
-  tailscale-nextcloud:
+  tailscale:
     image: tailscale/tailscale:latest # Image to be used
-    container_name: tailscale-nextcloud # Name for local container management
-    hostname: nextcloud # Name used within your Tailscale environment
+    container_name: ${SERVICE} # Name for local container management
+    hostname: ${SERVICE} # Name used within your Tailscale environment
     environment:
-      - TS_AUTHKEY=tskey-auth-<ADD-YOUR-AUTH-KEY-HERE>
+      - TS_AUTHKEY=${TS_AUTHKEY}
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_SERVE_CONFIG=/config/serve.json # Tailsacale Serve configuration to expose the web interface on your local Tailnet - remove this line if not required
       - TS_USERSPACE=false
     volumes:
-      - ${PWD}/nextcloud/config:/config # Config folder used to store Tailscale files - you may need to change the path
-      - ${PWD}/nextcloud/tailscale-nextcloud/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
+      - ${PWD}/${SERVICE}/ts/config:/config # Config folder used to store Tailscale files - you may need to change the path
+      - ${PWD}/${SERVICE}/ts/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
       - /dev/net/tun:/dev/net/tun # Network configuration for Tailscale to work
     cap_add:
-      - net_admin
-      - sys_module
+      - net_admin # Tailscale requirement
+      - sys_module # Tailscale requirement
+    #ports:
+    #  - 0.0.0.0:${SERVICEPORT}:${SERVICEPORT} # Binding port ${SERVICE}PORT to the local network - may be removed if only exposure to your Tailnet is required
     # If any DNS issues arise, use your preferred DNS provider by uncommenting the config below
     # dns: 
-    #   - 1.1.1.1
+    #   - ${DNS_SERVER}
     healthcheck:
       test: ["CMD", "tailscale", "status"] # Check if Tailscale is running
       interval: 1m # How often to perform the check
@@ -28,23 +31,24 @@ services:
       start_period: 10s # Time to wait before starting health checks
     restart: always
 
-  # NextCloud Server
-  nextcloud:
-    image: nextcloud:latest # Image to be used
-    network_mode: service:tailscale-nextcloud # Sidecar configuration to route NextCloud through Tailscale
-    container_name: nextcloud # Name for local container management
-    volumes:
-      - /mnt/nextcloud_data/:/var/www/html
+  # ${SERVICE}
+  application:
+    image: ${IMAGE_URL} # Image to be used
+    network_mode: service:tailscale # Sidecar configuration to route ${SERVICE} through Tailscale
+    container_name: app-${SERVICE} # Name for local container management
     environment:
-      - MYSQL_PASSWORD=<YOUR-SUPER-STRONG-PASSWORD>
+      - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
       - MYSQL_HOST=db # Please note, this variable should reflect the service name of the database itself, in this case db
+      - TZ=Europe/Amsterdam
+    volumes:
+      - ${PWD}/${SERVICE}/nextcloud_data/:/var/www/html
     depends_on:
+      - tailscale
       - db
-      - tailscale-nextcloud
     healthcheck:
-      test: ["CMD", "pgrep", "-f", "apache2"] # Check if Apache (used by Nextcloud) is running
+      test: ["CMD", "pgrep", "-f", "apache2"] # Check if ${SERVICE} process is running
       interval: 1m # How often to perform the check
       timeout: 10s # Time to wait for the check to succeed
       retries: 3 # Number of retries before marking as unhealthy
@@ -56,8 +60,8 @@ services:
     image: mariadb:latest # Image to be used
     container_name: nextcloud_db # Name for local container management
     environment:
-      - MYSQL_ROOT_PASSWORD=<YOUR-SUPER-STRONG-PASSWORD>
-      - MYSQL_PASSWORD=<YOUR-SUPER-STRONG-PASSWORD>
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
     volumes:
