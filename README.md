@@ -1,45 +1,67 @@
 # Tailscale Docker Sidecar Configuration Examples
 
-This repository provides examples of using [Tailscale](https://tailscale.com/) in a sidecar configuration within Docker, specifically for integrating Tailscale with services like [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome), [Plex Media Server](https://www.plex.tv/) and [Beszel](https://github.com/henrygd/beszel). By leveraging Tailscale's secure networking capabilities, these examples demonstrate how to seamlessly route traffic through Tailscale while maintaining service functionality and security.
+This repository provides examples of using [Tailscale](https://tailscale.com/) in a sidecar configuration within Docker, specifically for integrating Tailscale with various services. By leveraging Tailscale's secure networking capabilities, these examples demonstrate how to seamlessly route traffic through Tailscale while maintaining service functionality and security.
 
 The provided configurations showcase how to set up Tailscale alongside Docker services, with a focus on ensuring connectivity, security, and ease of deployment. The examples include configurations for Tailscale authentication, state management, and service routing.
 
-The example below illustrates a basic setup where Tailscale is used to manage network traffic for AdGuard Home in a Docker environment, utilizing a sidecar approach to simplify networking and enhance security.
+If you would like to add your own config, you can use the [service-template](templates/service-template/) or simply open an [issue](https://github.com/2Tiny2Scale/tailscale-docker-sidecar-configs/issues).
 
-If you would like to add your own config, you can use the [service-template](templates/service-template/).
+## Available Configurations
 
-## Currently Available Example Configurations
+### Networking and Security
 
-- [AdGuard Home](services/adguardhome)
-- [Bazarr](services/bazarr)
-- [Beszel](services/beszel)
-- [Changedetection.io](services/changedetection)
-- [Cyberchef](services/cyberchef)
-- [Dozzle](services/dozzle)
-- [Excalidraw](services/excalidraw)
-- [Gokapi](services/gokapi)
-- [Homarr](services/homarr)
-- [IT-Tools](services/it-tools)
-- [Jellyfin](services/jellyfin)
-- [LanguageTool](services/languagetool)
-- [NextCloud](services/nextcloud)
-- [Node-RED](services/nodered)
-- [Pi-hole](services/pihole)
-- [Pingvin Share](services/pingvin-share/)
-- [Plex](services/plex)
-- [Portainer](services/portainer)
-- [qBittorrent](services/qbittorrent)
-- [Radarr](services/radarr)
-- [Resilio Sync](services/resilio-sync)
-- [searXNG](services/searxng)
-- [Sonarr](services/sonarr)
-- [Stirling-PDF](services/stirlingpdf)
-- [Tailscale Exit Node](services/tailscale-exit-node)
-- [Tautulli](services/tautulli)
-- [Technitium DNS](services/technitium)
-- [Traefik Reverse Proxy](services/traefik)
-- [Uptime Kuma](services/uptime-kuma)
-- [Vaultwarden](services/vaultwarden)
+| 🌐 Service                 | 📝 Description                                                           | 🔗 Link                                 |
+| -------------------------- | ------------------------------------------------------------------------ | --------------------------------------- |
+| 🛡️ **AdGuard Home**        | Network-wide software for blocking ads and tracking.                     | [Details](services/adguardhome)         |
+| 🧩 **Pi-hole**             | A network-level ad blocker that acts as a DNS sinkhole.                  | [Details](services/pihole)              |
+| 🔒 **Technitium DNS**      | An open-source DNS server that can be used for self-hosted DNS services. | [Details](services/technitium)          |
+| 🌐 **Traefik**             | A modern reverse proxy and load balancer for microservices.              | [Details](services/traefik)             |
+| 🚀 **Tailscale Exit Node** | Configure a device to act as an exit node for your Tailscale network.    | [Details](services/tailscale-exit-node) |
+
+### Media and Entertainment
+
+| 🎥 Service         | 📝 Description                                                                             | 🔗 Link                         |
+| ------------------ | ------------------------------------------------------------------------------------------ | ------------------------------- |
+| 🎬 **Plex**        | A media server that organizes video, music, and photos from personal media libraries.      | [Details](services/plex)        |
+| 📺 **Jellyfin**    | An open-source media system that puts you in control of managing and streaming your media. | [Details](services/jellyfin)    |
+| 🎞️ **Radarr**      | A movie collection manager for Usenet and BitTorrent users.                                | [Details](services/radarr)      |
+| 📡 **Sonarr**      | A PVR for Usenet and BitTorrent users to manage TV series.                                 | [Details](services/sonarr)      |
+| 🎥 **Bazarr**      | A companion tool to Radarr and Sonarr for managing subtitles.                              | [Details](services/bazarr)      |
+| 📊 **Tautulli**    | A monitoring and tracking tool for Plex Media Server.                                      | [Details](services/tautulli)    |
+| 📥 **qBittorrent** | An open-source BitTorrent client.                                                          | [Details](services/qbittorrent) |
+
+### Productivity and Collaboration
+
+| 💼 Service           | 📝 Description                                                                  | 🔗 Link                            |
+| -------------------- | ------------------------------------------------------------------------------- | ---------------------------------- |
+| ☁️ **NextCloud**     | A suite of client-server software for creating and using file hosting services. | [Details](services/nextcloud)      |
+| 📝 **Excalidraw**    | A virtual collaborative whiteboard tool.                                        | [Details](services/excalidraw)     |
+| 🔗 **Pingvin Share** | A self-hosted file sharing platform.                                            | [Details](services/pingvin-share/) |
+| 🗂️ **Stirling-PDF**  | A web application for managing and editing PDF files.                           | [Details](services/stirlingpdf)    |
+| 🧠 **LanguageTool**  | An open-source proofreading software for multiple languages.                    | [Details](services/languagetool)   |
+| 🔄 **Resilio Sync**  | A fast, reliable, and simple file sync and share solution.                      | [Details](services/resilio-sync)   |
+| 🗃️ **Vaultwarden**   | An unofficial Bitwarden server implementation written in Rust.                  | [Details](services/vaultwarden)    |
+
+### Development Tools
+
+| 🛠️ Service                | 📝 Description                                                                           | 🔗 Link                             |
+| ------------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------- |
+| 🔧 **Cyberchef**          | A web app for encryption, encoding, compression, and data analysis.                      | [Details](services/cyberchef)       |
+| 🔍 **searXNG**            | A free internet metasearch engine which aggregates results from various search services. | [Details](services/searxng)         |
+| 🖥️ **Node-RED**           | A flow-based development tool for visual programming.                                    | [Details](services/nodered)         |
+| 🖥️ **IT-Tools**           | A collection of handy online tools for developers and sysadmins.                         | [Details](services/it-tools)        |
+| 🖥️ **Dozzle**             | A real-time log viewer for Docker containers.                                            | [Details](services/dozzle)          |
+| 🖥️ **Portainer**          | A lightweight management UI which allows you to easily manage your Docker environments.  | [Details](services/portainer)       |
+| 🖥️ **Gokapi**             | A lightweight self-hosted file sharing platform.                                         | [Details](services/gokapi)          |
+| 🖥️ **Homarr**             | A sleek dashboard for all your Homelab services.                                         | [Details](services/homarr)          |
+| 🖥️ **Changedetection.io** | A tool for monitoring website changes.                                                   | [Details](services/changedetection) |
+
+### Monitoring and Analytics
+
+| 📈 Service         | 📝 Description                                                                      | 🔗 Link                         |
+| ------------------ | ----------------------------------------------------------------------------------- | ------------------------------- |
+| 📊 **Uptime Kuma** | A self-hosted monitoring tool like "Uptime Robot".                                  | [Details](services/uptime-kuma) |
+| 📉 **Beszel**      | A lightweight server monitoring hub with historical data, Docker stats, and alerts. | [Details](services/beszel)      |
 
 ## Tailscale Funnel vs. Tailscale Serve
 
