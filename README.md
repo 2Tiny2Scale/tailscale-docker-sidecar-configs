@@ -13,11 +13,14 @@ If you would like to add your own config, you can use the [service-template](tem
 - [AdGuard Home](services/adguardhome)
 - [Bazarr](services/bazarr)
 - [Beszel](services/beszel)
+- [Changedetection.io](services/changedetection)
 - [Cyberchef](services/cyberchef)
 - [Dozzle](services/dozzle)
 - [Excalidraw](services/excalidraw)
 - [Gokapi](services/gokapi)
+- [Homarr](services/homarr)
 - [IT-Tools](services/it-tools)
+- [Jellyfin](services/jellyfin)
 - [LanguageTool](services/languagetool)
 - [NextCloud](services/nextcloud)
 - [Node-RED](services/nodered)
@@ -25,6 +28,7 @@ If you would like to add your own config, you can use the [service-template](tem
 - [Pingvin Share](services/pingvin-share/)
 - [Plex](services/plex)
 - [Portainer](services/portainer)
+- [qBittorrent](services/qbittorrent)
 - [Radarr](services/radarr)
 - [Resilio Sync](services/resilio-sync)
 - [searXNG](services/searxng)
@@ -36,7 +40,6 @@ If you would like to add your own config, you can use the [service-template](tem
 - [Traefik Reverse Proxy](services/traefik)
 - [Uptime Kuma](services/uptime-kuma)
 - [Vaultwarden](services/vaultwarden)
-- [qBittorrent](services/qbittorrent)
 
 ## Tailscale Funnel vs. Tailscale Serve
 
