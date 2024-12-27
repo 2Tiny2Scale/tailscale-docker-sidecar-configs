@@ -6,7 +6,7 @@ on:
       - main
     paths-ignore:
       - '.github/**'
-      - 'README.md'
+      # - 'README.md'
       - 'LICENSE'
       - '.gitignore'
       - '.gitattributes'
@@ -16,7 +16,7 @@ on:
       - main
     paths-ignore:
       - '.github/**'
-      - 'README.md'
+      # - 'README.md'
       - 'LICENSE'
       - '.gitignore'
       - '.gitattributes'
