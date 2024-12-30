@@ -29,6 +29,7 @@ If you would like to add your own config, you can use the [service-template](tem
 | 🎥 **Bazarr**      | A companion tool to Radarr and Sonarr for managing subtitles.                              | [Details](services/bazarr)      |
 | 📊 **Tautulli**    | A monitoring and tracking tool for Plex Media Server.                                      | [Details](services/tautulli)    |
 | 📥 **qBittorrent** | An open-source BitTorrent client.                                                          | [Details](services/qbittorrent) |
+| 🔗 **Slink**       | A fast, self-hosted alternative to ShareDrop for secure local file sharing.                | [Details](services/slink)       |
 
 ### Productivity and Collaboration
 
