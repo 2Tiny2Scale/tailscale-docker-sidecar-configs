@@ -11,6 +11,8 @@ services:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_EXTRA_ARGS=--advertise-exit-node
       - TS_USERSPACE=false
+      - TS_ENABLE_HEALTH_CHECK=true              # Enable healthcheck endpoint: "/healthz"
+      - TS_LOCAL_ADDR_PORT=127.0.0.1:41234       # The <addr>:<port> for the healthz endpoint
     volumes:
       - ${PWD}/${SERVICE}/ts/config:/config # Config folder used to store Tailscale files - you may need to change the path
       - ${PWD}/${SERVICE}/ts/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
@@ -27,7 +29,7 @@ services:
       - /dev/net/tun
     network_mode: bridge
     healthcheck:
-      test: ["CMD", "tailscale", "status"] # Check if Tailscale is running
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:41234/healthz"] # Check Tailscale has a Tailnet IP and is operational
       interval: 1m # How often to perform the check
       timeout: 10s # Time to wait for the check to succeed
       retries: 3 # Number of retries before marking as unhealthy
