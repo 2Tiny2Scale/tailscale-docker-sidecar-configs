@@ -42,6 +42,7 @@ If you would like to add your own config, you can use the [service-template](tem
 | 🧠 **LanguageTool**  | An open-source proofreading software for multiple languages.                    | [Details](services/languagetool)   |
 | 🔄 **Resilio Sync**  | A fast, reliable, and simple file sync and share solution.                      | [Details](services/resilio-sync)   |
 | 🗃️ **Vaultwarden**   | An unofficial Bitwarden server implementation written in Rust.                  | [Details](services/vaultwarden)    |
+| 🌿 **Isley**         | A self-hosted cannabis grow journal for tracking plants and managing grow data. | [Details](services/isley)          |
 
 ### Development Tools
 
