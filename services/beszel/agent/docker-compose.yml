@@ -44,7 +44,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro # Read-only access to the docker.sock
     depends_on:
-      - tailscale
+      tailscale:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "pgrep", "-f", "${SERVICE}"] # Check if ${SERVICE} process is running
       interval: 1m # How often to perform the check

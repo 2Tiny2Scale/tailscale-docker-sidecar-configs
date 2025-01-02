@@ -58,8 +58,10 @@ services:
         max-size: "1m"
         max-file: "1"
     depends_on:
-      - tailscale
-      - redis
+      tailscale:
+        condition: service_healthy
+      redis:
+        condition: service_started
 
   redis:
     container_name: redis-searxng

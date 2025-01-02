@@ -49,7 +49,8 @@ services:
       - ${PWD}/${SERVICE}/media/tvseries:/tv
       - ${PWD}/${SERVICE}/media/movies:/movies
     depends_on:
-      - tailscale
+      tailscale:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "pgrep", "-f", "Plex Media Server"] # Check if ${SERVICE} process is running
       interval: 1m # How often to perform the check

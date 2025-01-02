@@ -44,5 +44,6 @@ services:
     volumes:
       - ${PWD}/${SERVICE}/vw-data:/data
     depends_on:
-      - tailscale
+      tailscale:
+        condition: service_healthy
     restart: always

@@ -46,5 +46,6 @@ services:
       - ${PWD}/${SERVICE}/uptime-kuma-data:/app/data # uptime-kuma data/configuration folder
       - /var/run/docker.sock:/var/run/docker.sock:ro # Read-only access to the docker.sock
     depends_on:
-      - tailscale
+      tailscale:
+        condition: service_healthy
     restart: always

@@ -45,7 +45,8 @@ services:
     volumes:
       - ${PWD}/${SERVICE}/beszel_data:/beszel_data  # Work directory for Beszel Hub - you may need to change the path
     depends_on:
-      - tailscale
+      tailscale:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "pgrep", "-f", "${SERVICE}"] # Check if ${SERVICE} process is running
       interval: 1m # How often to perform the check
