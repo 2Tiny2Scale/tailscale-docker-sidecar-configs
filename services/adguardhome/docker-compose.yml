@@ -45,7 +45,8 @@ services:
       - ${PWD}/${SERVICE}/workdir:/opt/adguardhome/work # Work directory for Adguard Home - you may need to change the path
       - ${PWD}/${SERVICE}/configdir:/opt/adguardhome/conf # Config directory for Adguard Home - you may need to change the path
     depends_on:
-      - tailscale
+      tailscale:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "pgrep", "-f", "${SERVICE}"] # Check if ${SERVICE} process is running
       interval: 1m # How often to perform the check

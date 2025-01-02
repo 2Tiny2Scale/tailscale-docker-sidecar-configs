@@ -48,7 +48,8 @@ services:
       - ${PWD}/${SERVICE}/config:/config
       - ${PWD}/${SERVICE}/downloads:/downloads
     depends_on:
-      - tailscale
+      tailscale:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "pgrep", "-f", "${SERVICE}"] # Check if ${SERVICE} process is running
       interval: 1m # How often to perform the check

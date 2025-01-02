@@ -47,8 +47,10 @@ services:
     volumes:
       - ${PWD}/${SERVICE}/nextcloud_data/:/var/www/html
     depends_on:
-      - tailscale
-      - db
+      tailscale:
+        condition: service_healthy
+      db:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "pgrep", "-f", "apache2"] # Check if ${SERVICE} process is running
       interval: 1m # How often to perform the check

@@ -45,7 +45,8 @@ services:
       - ${PWD}/${SERVICE}/data:/opt/app/backend/data
       - ${PWD}/${SERVICE}/images:/opt/app/frontend/public/img
     depends_on:
-      - tailscale
+      tailscale:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "pgrep", "-f", "caddy"] # Check if ${SERVICE} process is running
       interval: 1m # How often to perform the check
