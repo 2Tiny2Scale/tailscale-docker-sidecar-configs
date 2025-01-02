@@ -8,11 +8,11 @@ Provide a clear and concise description of the issue:
 - Where does it occur (specific service or file)?
 - Steps to reproduce (if applicable)
 
-## Expected Behavior
+## Expected Behaviour
 
 Describe what you expected to happen.
 
-## Actual Behavior
+## Actual Behaviour
 
 Describe what actually happened.
 
