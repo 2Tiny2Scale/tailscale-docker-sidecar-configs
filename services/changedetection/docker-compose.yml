@@ -6,6 +6,7 @@ services:
     image: tailscale/tailscale:latest # Image to be used
     container_name: ${SERVICE} # Name for local container management
     hostname: ${SERVICE} # Name used within your Tailscale environment
+    privileged: true
     environment:
       - TS_AUTHKEY=${TS_AUTHKEY}
       - TS_STATE_DIR=/var/lib/tailscale
