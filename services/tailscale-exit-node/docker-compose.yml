@@ -16,6 +16,7 @@ services:
     volumes:
       - ${PWD}/${SERVICE}/ts/config:/config # Config folder used to store Tailscale files - you may need to change the path
       - ${PWD}/${SERVICE}/ts/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
+    devices:
       - /dev/net/tun:/dev/net/tun # Network configuration for Tailscale to work
     dns:
       - 1.1.1.1 # Can be changed to your desired DNS provider

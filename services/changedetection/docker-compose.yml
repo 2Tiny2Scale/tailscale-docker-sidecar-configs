@@ -6,7 +6,6 @@ services:
     image: tailscale/tailscale:latest # Image to be used
     container_name: ${SERVICE} # Name for local container management
     hostname: ${SERVICE} # Name used within your Tailscale environment
-    privileged: true
     environment:
       - TS_AUTHKEY=${TS_AUTHKEY}
       - TS_STATE_DIR=/var/lib/tailscale
@@ -17,6 +16,7 @@ services:
     volumes:
       - ${PWD}/${SERVICE}/ts/config:/config # Config folder used to store Tailscale files - you may need to change the path
       - ${PWD}/${SERVICE}/ts/state:/var/lib/tailscale # Tailscale requirement - you may need to change the path
+    devices:
       - /dev/net/tun:/dev/net/tun # Network configuration for Tailscale to work
     cap_add:
       - net_admin # Tailscale requirement
