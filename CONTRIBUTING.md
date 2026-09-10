@@ -4,10 +4,10 @@ Thanks for helping improve these Tailscale sidecar examples.
 
 ## Add a service
 
-1. Copy the service template from the repository root:
+1. Copy the service template from the repository root. Replace `my-service` with your service name:
 
    ```sh
-   cp -R templates/service-template services/<service-name>
+   cp -R templates/service-template services/my-service
    ```
 
    This command includes the hidden `.env` file. Use a lowercase directory name.

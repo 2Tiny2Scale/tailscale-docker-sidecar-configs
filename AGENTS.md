@@ -15,10 +15,10 @@ Follow [CONTRIBUTING.md](CONTRIBUTING.md) and the current service template.
 Run `docker compose config --quiet` from each changed service directory. When
 possible, start the stack and test its main function through the Tailnet.
 
-Run these checks for changed Markdown files:
+From the repository root, lint the changed Markdown files. Replace the example paths below as needed:
 
 ```sh
-rumdl check --config .markdownlint.yml <changed-markdown-files>
+rumdl check --config .markdownlint.yml AGENTS.md CONTRIBUTING.md
 git diff --check
 ```
 
